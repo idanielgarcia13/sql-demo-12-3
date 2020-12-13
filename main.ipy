@@ -1,0 +1,16 @@
+# coding: utf-8
+import sqlite3
+conn = sqlite3.connect('books.db')
+c = conn.cursor()
+c.execute('SELECT last FROM authors ORDER BY last DESC')
+print(c.fetchall())
+c.execute('SELECT title FROM titles ORDER BY title ASC')
+print(c.fetchall())
+c.execute('INSERT INTO authors (first, last) VALUES ('Daniel', 'Garcia')')
+c.execute('INSERT INTO authors (first, last) VALUES ("Daniel", "Garcia")')
+c.execute('SELECT * FROM authors')
+    print(c.fetchall())
+c.execute('INSERT INTO author_ISBN (id, isbn) VALUES ("6", "0196301548")')
+c.execute('INSERT INTO titles (isbn, title, edition, copyright) VALUES ("0196301548", "Intro to iOS Development", 3, 2020)')
+c.execute('SELECT * FROM titles')
+print(c.fetchall())
